@@ -1,0 +1,304 @@
+{
+    "image_name": "collapsed_building_image0002_1.png",
+    "area": "collapsed",
+    "people_count": 27,
+    "victims": [
+        {
+            "x_center": 0.107282,
+            "y_center": 0.528121,
+            "confidence": 1.0,
+            "pixel_coords": [
+                77,
+                379,
+                87,
+                391
+            ]
+        },
+        {
+            "x_center": 0.754226,
+            "y_center": 0.855967,
+            "confidence": 1.0,
+            "pixel_coords": [
+                566,
+                613,
+                592,
+                634
+            ]
+        },
+        {
+            "x_center": 0.847854,
+            "y_center": 0.756516,
+            "confidence": 1.0,
+            "pixel_coords": [
+                649,
+                550,
+                653,
+                553
+            ]
+        },
+        {
+            "x_center": 0.103381,
+            "y_center": 0.929355,
+            "confidence": 1.0,
+            "pixel_coords": [
+                78,
+                673,
+                80,
+                680
+            ]
+        },
+        {
+            "x_center": 0.050065,
+            "y_center": 0.034294,
+            "confidence": 1.0,
+            "pixel_coords": [
+                37,
+                23,
+                39,
+                27
+            ]
+        },
+        {
+            "x_center": 0.607932,
+            "y_center": 0.154321,
+            "confidence": 1.0,
+            "pixel_coords": [
+                462,
+                105,
+                471,
+                119
+            ]
+        },
+        {
+            "x_center": 0.648895,
+            "y_center": 0.263374,
+            "confidence": 1.0,
+            "pixel_coords": [
+                498,
+                188,
+                500,
+                194
+            ]
+        },
+        {
+            "x_center": 0.860208,
+            "y_center": 0.347051,
+            "confidence": 1.0,
+            "pixel_coords": [
+                652,
+                248,
+                670,
+                258
+            ]
+        },
+        {
+            "x_center": 0.148244,
+            "y_center": 0.932099,
+            "confidence": 1.0,
+            "pixel_coords": [
+                109,
+                673,
+                117,
+                686
+            ]
+        },
+        {
+            "x_center": 0.384265,
+            "y_center": 0.200274,
+            "confidence": 1.0,
+            "pixel_coords": [
+                289,
+                134,
+                300,
+                156
+            ]
+        },
+        {
+            "x_center": 0.628739,
+            "y_center": 0.375171,
+            "confidence": 1.0,
+            "pixel_coords": [
+                470,
+                263,
+                497,
+                282
+            ]
+        },
+        {
+            "x_center": 0.505202,
+            "y_center": 0.447188,
+            "confidence": 1.0,
+            "pixel_coords": [
+                383,
+                318,
+                394,
+                334
+            ]
+        },
+        {
+            "x_center": 0.907672,
+            "y_center": 0.645405,
+            "confidence": 1.0,
+            "pixel_coords": [
+                693,
+                465,
+                701,
+                476
+            ]
+        },
+        {
+            "x_center": 0.164499,
+            "y_center": 0.573388,
+            "confidence": 1.0,
+            "pixel_coords": [
+                112,
+                413,
+                139,
+                421
+            ]
+        },
+        {
+            "x_center": 0.958388,
+            "y_center": 0.611797,
+            "confidence": 1.0,
+            "pixel_coords": [
+                734,
+                439,
+                740,
+                452
+            ]
+        },
+        {
+            "x_center": 0.762029,
+            "y_center": 0.748285,
+            "confidence": 1.0,
+            "pixel_coords": [
+                585,
+                542,
+                587,
+                547
+            ]
+        },
+        {
+            "x_center": 0.964239,
+            "y_center": 0.571331,
+            "confidence": 1.0,
+            "pixel_coords": [
+                736,
+                405,
+                745,
+                428
+            ]
+        },
+        {
+            "x_center": 0.73277,
+            "y_center": 0.83059,
+            "confidence": 1.0,
+            "pixel_coords": [
+                558,
+                598,
+                569,
+                613
+            ]
+        },
+        {
+            "x_center": 0.711313,
+            "y_center": 0.050069,
+            "confidence": 1.0,
+            "pixel_coords": [
+                544,
+                33,
+                548,
+                40
+            ]
+        },
+        {
+            "x_center": 0.854356,
+            "y_center": 0.331276,
+            "confidence": 1.0,
+            "pixel_coords": [
+                649,
+                236,
+                663,
+                247
+            ]
+        },
+        {
+            "x_center": 0.548765,
+            "y_center": 0.397119,
+            "confidence": 1.0,
+            "pixel_coords": [
+                421,
+                286,
+                423,
+                291
+            ]
+        },
+        {
+            "x_center": 0.637191,
+            "y_center": 0.668038,
+            "confidence": 1.0,
+            "pixel_coords": [
+                487,
+                479,
+                492,
+                493
+            ]
+        },
+        {
+            "x_center": 0.93303,
+            "y_center": 0.865569,
+            "confidence": 1.0,
+            "pixel_coords": [
+                704,
+                621,
+                730,
+                639
+            ]
+        },
+        {
+            "x_center": 0.948635,
+            "y_center": 0.35048,
+            "confidence": 1.0,
+            "pixel_coords": [
+                728,
+                252,
+                731,
+                258
+            ]
+        },
+        {
+            "x_center": 0.159298,
+            "y_center": 0.432785,
+            "confidence": 1.0,
+            "pixel_coords": [
+                116,
+                306,
+                129,
+                325
+            ]
+        },
+        {
+            "x_center": 0.144993,
+            "y_center": 0.104252,
+            "confidence": 1.0,
+            "pixel_coords": [
+                95,
+                40,
+                126,
+                110
+            ]
+        },
+        {
+            "x_center": 0.0253576,
+            "y_center": 0.0679012,
+            "confidence": 1.0,
+            "pixel_coords": [
+                4,
+                16,
+                33,
+                81
+            ]
+        }
+    ]
+}
