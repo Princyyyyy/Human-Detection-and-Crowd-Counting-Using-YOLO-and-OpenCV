@@ -4,41 +4,37 @@ import json
 import tkinter as tk
 from tkinter import Label, Button
 from PIL import Image, ImageTk
+import folium
+import webbrowser
 
-# Paths
+# ---------- Global Setup ----------
 image_dir = "D:\\C2A_Dataset\\Flood_Dataset\\test\\images"
 label_dir = "D:\\C2A_Dataset\\Flood_Dataset\\test\\labels"
 
-# Get sorted image files
 image_files = sorted([f for f in os.listdir(image_dir) if f.endswith(('.png', '.jpg', '.jpeg'))])
-
-# Check if images exist
 if not image_files:
     raise FileNotFoundError(f"No images found in {image_dir}")
 
-# Initialize index
 index = 0
+victims_info = []  # ✅ Global variable to store detection info
 
-# Function to extract area name from filename
+image_gps_mapping = {
+    "image1.png": (12.9716, 77.5946),
+    "image2.png": (13.0827, 80.2707),
+    "collapsed_building_image0001_3.png": (12.9716, 77.5946),
+}
+
+# ---------- Utility Functions ----------
 def extract_area_name(filename):
     parts = filename.split("_")
-    if len(parts) > 1:
-        return parts[0]
-    return "Unknown Area"
+    return parts[0] if len(parts) > 1 else "Unknown Area"
 
-# Function to load and display image
 def load_image():
-    global index, img_label, img_tk
+    global index, img_label, img_tk, victims_info
+    victims_info = []  # ✅ Clear and reinitialize global list
 
     image_path = os.path.join(image_dir, image_files[index])
-    label_path = os.path.join(label_dir, image_files[index].replace('.png', '.txt').replace('.jpg', '.txt').replace('.jpeg', '.txt'))
-
-    # Ensure output folder exists
-    os.makedirs("victim_outputs", exist_ok=True)
-
-    # Prepare JSON path
-    json_filename = image_files[index].replace('.png', '.json').replace('.jpg', '.json').replace('.jpeg', '.json')
-    json_path = os.path.join("victim_outputs", json_filename)
+    label_path = os.path.join(label_dir, os.path.splitext(image_files[index])[0] + ".txt")
 
     area_name = extract_area_name(image_files[index])
     image = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
@@ -48,9 +44,7 @@ def load_image():
         return
 
     h, w, _ = image.shape
-
     people_count = 0
-    victims_info = []
 
     if os.path.exists(label_path):
         with open(label_path, "r") as file:
@@ -76,49 +70,25 @@ def load_image():
                     "x_center": x_center,
                     "y_center": y_center,
                     "confidence": confidence,
-                    "pixel_coords": [x1, y1, x2, y2]
+                    "pixel_coords": (x1, y1, x2, y2)
                 })
 
                 cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-        # Sort victims by confidence
         victims_info.sort(key=lambda x: x["confidence"], reverse=True)
 
-    # Display people count
     cv2.putText(image, f"People: {people_count}", (20, 40),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
-    # Convert and display image in Tkinter
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    img_pil = Image.fromarray(image)
-    img_pil = img_pil.resize((600, 400))
+    img_pil = Image.fromarray(image).resize((600, 400))
     img_tk = ImageTk.PhotoImage(img_pil)
 
     img_label.config(image=img_tk)
     img_label.image = img_tk
-
-    # Update area and count labels
     area_label.config(text=f"Area: {area_name}")
     count_label.config(text=f"People Count: {people_count}")
 
-    # Update victim coordinates label
-    # coords_text = "Victim Coordinates (sorted by confidence):\n"
-    # for i, victim in enumerate(victims_info):
-    #     coords_text += f"{i+1}. X: {victim['x_center']:.2f}, Y: {victim['y_center']:.2f}, Conf: {victim['confidence']:.2f}\n"
-    # coords_label.config(text=coords_text)
-
-    # Save victim info to JSON file
-    output_data = {
-        "image_name": image_files[index],
-        "area": area_name,
-        "people_count": people_count,
-        "victims": victims_info
-    }
-
-    with open(json_path, "w") as f:
-        json.dump(output_data, f, indent=4)
-
-# Navigation functions
 def next_image():
     global index
     index = (index + 1) % len(image_files)
@@ -129,7 +99,31 @@ def prev_image():
     index = (index - 1) % len(image_files)
     load_image()
 
-# GUI Setup
+def plot_on_google_maps():
+    global victims_info
+    filename = image_files[index]
+    gps = image_gps_mapping.get(filename)
+
+    if gps is None:
+        print(f"No GPS mapping for {filename}. Skipping map plot.")
+        return
+
+    lat, lon = gps
+    m = folium.Map(location=[lat, lon], zoom_start=18)
+
+    for victim in victims_info:
+        m_lat = lat + (victim['y_center'] - 0.5) * 0.0005
+        m_lon = lon + (victim['x_center'] - 0.5) * 0.0005
+        folium.Marker(
+            location=[m_lat, m_lon],
+            popup=f"Conf: {victim['confidence']:.2f}"
+        ).add_to(m)
+
+    map_path = "victim_map.html"
+    m.save(map_path)
+    webbrowser.open(map_path)
+
+# ---------- GUI Setup ----------
 root = tk.Tk()
 root.title("Flood Rescue Image Viewer")
 root.geometry("700x600")
@@ -144,9 +138,6 @@ area_label.pack()
 count_label = Label(root, text="People Count: 0", font=("Arial", 14, "bold"), fg="white", bg="black")
 count_label.pack()
 
-# coords_label = Label(root, text="Victim Coordinates: ", font=("Arial", 12), fg="lightblue", bg="black", justify="left")
-# coords_label.pack()
-
 btn_frame = tk.Frame(root, bg="black")
 btn_frame.pack(pady=10)
 
@@ -156,8 +147,9 @@ prev_btn.grid(row=0, column=0, padx=10)
 next_btn = Button(btn_frame, text="Next ➡", font=("Arial", 12), command=next_image)
 next_btn.grid(row=0, column=1, padx=10)
 
-# Load first image
-load_image()
+map_btn = Button(btn_frame, text="🗺 Plot on Map", font=("Arial", 12), command=plot_on_google_maps)
+map_btn.grid(row=1, column=0, columnspan=2, pady=10)
 
-# Run GUI
+# ---------- Run ----------
+load_image()
 root.mainloop()
