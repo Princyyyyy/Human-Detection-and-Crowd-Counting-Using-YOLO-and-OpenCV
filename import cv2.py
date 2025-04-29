@@ -101,16 +101,24 @@ def prev_image():
 
 def plot_on_google_maps():
     global victims_info
+
     filename = image_files[index]
+
+    # Try to get real GPS
     gps = image_gps_mapping.get(filename)
 
     if gps is None:
-        print(f"No GPS mapping for {filename}. Skipping map plot.")
-        return
+        # Generate dummy GPS for testing (based on index)
+        base_lat, base_lon = 12.9716, 77.5946
+        gps = (base_lat + index * 0.0001, base_lon + index * 0.0001)
+        print(f"[Info] Using dummy GPS for {filename}: {gps}")
 
     lat, lon = gps
+
+    # Create a map centered at the GPS coordinates
     m = folium.Map(location=[lat, lon], zoom_start=18)
 
+    # Add markers for each victim
     for victim in victims_info:
         m_lat = lat + (victim['y_center'] - 0.5) * 0.0005
         m_lon = lon + (victim['x_center'] - 0.5) * 0.0005
@@ -119,6 +127,7 @@ def plot_on_google_maps():
             popup=f"Conf: {victim['confidence']:.2f}"
         ).add_to(m)
 
+    # Save and open the map
     map_path = "victim_map.html"
     m.save(map_path)
     webbrowser.open(map_path)
