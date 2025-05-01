@@ -10,13 +10,15 @@ import webbrowser
 # ---------- Global Setup ----------
 image_dir = "D:\\C2A_Dataset\\Flood_Dataset\\test\\images"
 label_dir = "D:\\C2A_Dataset\\Flood_Dataset\\test\\labels"
+output_json_dir = "victims_output"
+os.makedirs(output_json_dir, exist_ok=True)  # Ensure JSON output directory exists
 
 image_files = sorted([f for f in os.listdir(image_dir) if f.endswith(('.png', '.jpg', '.jpeg'))])
 if not image_files:
     raise FileNotFoundError(f"No images found in {image_dir}")
 
 index = 0
-victims_info = []  # ✅ Global variable to store detection info
+victims_info = []  # Global variable to store detection info
 
 image_gps_mapping = {
     "image1.png": (12.9716, 77.5946),
@@ -31,7 +33,7 @@ def extract_area_name(filename):
 
 def load_image():
     global index, img_label, img_tk, victims_info
-    victims_info = []  # ✅ Clear and reinitialize global list
+    victims_info = []  # Clear and reinitialize global list
 
     image_path = os.path.join(image_dir, image_files[index])
     label_path = os.path.join(label_dir, os.path.splitext(image_files[index])[0] + ".txt")
@@ -70,12 +72,17 @@ def load_image():
                     "x_center": x_center,
                     "y_center": y_center,
                     "confidence": confidence,
-                    "pixel_coords": (x1, y1, x2, y2)
+                    "pixel_coords": [x1, y1, x2, y2]
                 })
 
                 cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
         victims_info.sort(key=lambda x: x["confidence"], reverse=True)
+
+        # Save JSON file
+        json_path = os.path.join(output_json_dir, os.path.splitext(image_files[index])[0] + "_detections.json")
+        with open(json_path, "w") as json_file:
+            json.dump(victims_info, json_file, indent=4)
 
     cv2.putText(image, f"People: {people_count}", (20, 40),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
@@ -103,22 +110,16 @@ def plot_on_google_maps():
     global victims_info
 
     filename = image_files[index]
-
-    # Try to get real GPS
     gps = image_gps_mapping.get(filename)
 
     if gps is None:
-        # Generate dummy GPS for testing (based on index)
         base_lat, base_lon = 12.9716, 77.5946
         gps = (base_lat + index * 0.0001, base_lon + index * 0.0001)
         print(f"[Info] Using dummy GPS for {filename}: {gps}")
 
     lat, lon = gps
-
-    # Create a map centered at the GPS coordinates
     m = folium.Map(location=[lat, lon], zoom_start=18)
 
-    # Add markers for each victim
     for victim in victims_info:
         m_lat = lat + (victim['y_center'] - 0.5) * 0.0005
         m_lon = lon + (victim['x_center'] - 0.5) * 0.0005
@@ -127,7 +128,6 @@ def plot_on_google_maps():
             popup=f"Conf: {victim['confidence']:.2f}"
         ).add_to(m)
 
-    # Save and open the map
     map_path = "victim_map.html"
     m.save(map_path)
     webbrowser.open(map_path)
