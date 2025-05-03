@@ -1,0 +1,365 @@
+[
+    {
+        "x_center": 0.060345,
+        "y_center": 0.162712,
+        "confidence": 1.0,
+        "pixel_coords": [
+            9,
+            31,
+            26,
+            64
+        ]
+    },
+    {
+        "x_center": 0.356897,
+        "y_center": 0.513559,
+        "confidence": 1.0,
+        "pixel_coords": [
+            98,
+            145,
+            109,
+            156
+        ]
+    },
+    {
+        "x_center": 0.637931,
+        "y_center": 0.654237,
+        "confidence": 1.0,
+        "pixel_coords": [
+            166,
+            185,
+            203,
+            199
+        ]
+    },
+    {
+        "x_center": 0.981034,
+        "y_center": 0.530508,
+        "confidence": 1.0,
+        "pixel_coords": [
+            282,
+            152,
+            285,
+            159
+        ]
+    },
+    {
+        "x_center": 0.534483,
+        "y_center": 0.184746,
+        "confidence": 1.0,
+        "pixel_coords": [
+            140,
+            46,
+            170,
+            63
+        ]
+    },
+    {
+        "x_center": 0.596552,
+        "y_center": 0.947458,
+        "confidence": 1.0,
+        "pixel_coords": [
+            162,
+            268,
+            184,
+            291
+        ]
+    },
+    {
+        "x_center": 0.225862,
+        "y_center": 0.049153,
+        "confidence": 1.0,
+        "pixel_coords": [
+            54,
+            5,
+            76,
+            24
+        ]
+    },
+    {
+        "x_center": 0.808621,
+        "y_center": 0.889831,
+        "confidence": 1.0,
+        "pixel_coords": [
+            231,
+            259,
+            238,
+            266
+        ]
+    },
+    {
+        "x_center": 0.394828,
+        "y_center": 0.177966,
+        "confidence": 1.0,
+        "pixel_coords": [
+            101,
+            42,
+            128,
+            62
+        ]
+    },
+    {
+        "x_center": 0.277586,
+        "y_center": 0.791525,
+        "confidence": 1.0,
+        "pixel_coords": [
+            64,
+            224,
+            96,
+            241
+        ]
+    },
+    {
+        "x_center": 0.158621,
+        "y_center": 0.449153,
+        "confidence": 1.0,
+        "pixel_coords": [
+            37,
+            128,
+            55,
+            137
+        ]
+    },
+    {
+        "x_center": 0.15,
+        "y_center": 0.115254,
+        "confidence": 1.0,
+        "pixel_coords": [
+            36,
+            22,
+            50,
+            44
+        ]
+    },
+    {
+        "x_center": 0.168966,
+        "y_center": 0.049153,
+        "confidence": 1.0,
+        "pixel_coords": [
+            47,
+            12,
+            51,
+            17
+        ]
+    },
+    {
+        "x_center": 0.844828,
+        "y_center": 0.50339,
+        "confidence": 1.0,
+        "pixel_coords": [
+            243,
+            146,
+            247,
+            151
+        ]
+    },
+    {
+        "x_center": 0.548276,
+        "y_center": 0.969492,
+        "confidence": 1.0,
+        "pixel_coords": [
+            157,
+            281,
+            161,
+            291
+        ]
+    },
+    {
+        "x_center": 0.517241,
+        "y_center": 0.847458,
+        "confidence": 1.0,
+        "pixel_coords": [
+            136,
+            240,
+            162,
+            260
+        ]
+    },
+    {
+        "x_center": 0.106897,
+        "y_center": 0.845763,
+        "confidence": 1.0,
+        "pixel_coords": [
+            16,
+            241,
+            46,
+            258
+        ]
+    },
+    {
+        "x_center": 0.8,
+        "y_center": 0.723729,
+        "confidence": 1.0,
+        "pixel_coords": [
+            213,
+            207,
+            250,
+            220
+        ]
+    },
+    {
+        "x_center": 0.094828,
+        "y_center": 0.118644,
+        "confidence": 1.0,
+        "pixel_coords": [
+            21,
+            21,
+            34,
+            48
+        ]
+    },
+    {
+        "x_center": 0.217241,
+        "y_center": 0.028814,
+        "confidence": 1.0,
+        "pixel_coords": [
+            47,
+            0,
+            77,
+            17
+        ]
+    },
+    {
+        "x_center": 0.717241,
+        "y_center": 0.049153,
+        "confidence": 1.0,
+        "pixel_coords": [
+            191,
+            6,
+            223,
+            23
+        ]
+    },
+    {
+        "x_center": 0.275862,
+        "y_center": 0.169492,
+        "confidence": 1.0,
+        "pixel_coords": [
+            61,
+            43,
+            97,
+            57
+        ]
+    },
+    {
+        "x_center": 0.875862,
+        "y_center": 0.920339,
+        "confidence": 1.0,
+        "pixel_coords": [
+            246,
+            264,
+            261,
+            278
+        ]
+    },
+    {
+        "x_center": 0.363793,
+        "y_center": 0.345763,
+        "confidence": 1.0,
+        "pixel_coords": [
+            96,
+            88,
+            114,
+            116
+        ]
+    },
+    {
+        "x_center": 0.693103,
+        "y_center": 0.754237,
+        "confidence": 1.0,
+        "pixel_coords": [
+            196,
+            213,
+            204,
+            230
+        ]
+    },
+    {
+        "x_center": 0.622414,
+        "y_center": 0.761017,
+        "confidence": 1.0,
+        "pixel_coords": [
+            173,
+            208,
+            188,
+            240
+        ]
+    },
+    {
+        "x_center": 0.677586,
+        "y_center": 0.854237,
+        "confidence": 1.0,
+        "pixel_coords": [
+            177,
+            244,
+            214,
+            258
+        ]
+    },
+    {
+        "x_center": 0.293103,
+        "y_center": 0.361017,
+        "confidence": 1.0,
+        "pixel_coords": [
+            75,
+            96,
+            93,
+            116
+        ]
+    },
+    {
+        "x_center": 0.581034,
+        "y_center": 0.369492,
+        "confidence": 1.0,
+        "pixel_coords": [
+            166,
+            105,
+            169,
+            113
+        ]
+    },
+    {
+        "x_center": 0.017241,
+        "y_center": 0.438983,
+        "confidence": 1.0,
+        "pixel_coords": [
+            2,
+            127,
+            6,
+            131
+        ]
+    },
+    {
+        "x_center": 0.182759,
+        "y_center": 0.633898,
+        "confidence": 1.0,
+        "pixel_coords": [
+            47,
+            182,
+            59,
+            190
+        ]
+    },
+    {
+        "x_center": 0.418966,
+        "y_center": 0.133898,
+        "confidence": 1.0,
+        "pixel_coords": [
+            119,
+            36,
+            124,
+            41
+        ]
+    },
+    {
+        "x_center": 0.267241,
+        "y_center": 0.120339,
+        "confidence": 1.0,
+        "pixel_coords": [
+            72,
+            28,
+            81,
+            42
+        ]
+    }
+]
